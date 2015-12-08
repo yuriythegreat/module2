@@ -1,0 +1,73 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.*;
+
+public class List extends JFrame {
+
+    public static void createGUI() {
+        JFrame frame = new JFrame("Tournament List");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Font font = new Font("Verdana", Font.PLAIN, 10);
+
+        JMenuBar menuBar = new JMenuBar();
+
+        JMenu fileMenu = new JMenu("Пошук команд");
+        fileMenu.setFont(font);
+        JMenu viewMenu = new JMenu("Додати команду");
+        viewMenu.setFont(font);
+        JMenu helpMenu = new JMenu("Видалити Команду");
+        helpMenu.setFont(font);
+
+
+        menuBar.add(fileMenu);
+        menuBar.add(viewMenu);
+        menuBar.add(helpMenu);
+
+
+        frame.setJMenuBar(menuBar);
+
+        String[] columnNames = {
+                "Place",
+                "Commands",
+                "Games",
+                "Wins",
+                "Losts",
+                "Goals",
+                "Scores"
+        };
+
+        String[][] data = {
+                {"1", "Чехія", "10", "7", "2", "19", "22"},
+                {"2", "Ісландія", "10", "6", "2", "17", "20"},
+                {"3", "Туреччина", "10", "5", "2", "14", "18"},
+                {"4", "Нідерланди", "10", "4", "5", "17", "13"},
+                {"5", "Казахстан", "10", "1", "7", "7", "5"},
+                {"6", "Латвія", "10", "0", "5", "6", "5"},
+
+        };
+
+        JTable table = new JTable(data, columnNames);
+
+        JScrollPane scrollPane = new JScrollPane(table);
+
+        frame.getContentPane().add(scrollPane);
+        frame.setPreferredSize(new Dimension(900, 200));
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                JFrame.setDefaultLookAndFeelDecorated(true);
+                createGUI();
+
+
+            }
+        });
+    }
+}
